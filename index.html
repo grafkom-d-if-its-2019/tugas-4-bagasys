@@ -1,86 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Belajar WebGL</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      .center {
-        margin: auto;
-        width: 50%;
-      }
-      .container {
-        margin: auto;
-        width: 80%;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div id="header">
-        <h1>Animasi Kubus dan Huruf</h1>
-        <h2>Bagas Y. Sudrajad - 05111740000074 - GrafKom D</h2>
-        <h3>Petunjuk</h3>
-        <div style="width: 50%;margin: auto;">
-          <div class="u-pull-left" style="">
-            Sumbu Rotasi Kubus:
-            <ul>
-              <li>
-                Sumbu X: Keyboard 'X'
-              </li>
-              <li>
-                Sumbu Y: Keyboard 'Y'
-              </li>
-              <li>
-                Sumbu Z: Keyboard 'Z'
-              </li>
-            </ul>
-          </div>
-          <div class="u-pull-right">
-            Kecepatan Rotasi Kubus:
-            <ul>
-              <li>
-                akselerasi positif: Keyboard '+'
-              </li>
-              <li>
-                akselerasi negatif: Keyboard '-'
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="u-cf"></div>
-      <div class="">
-        <canvas id="glcanvas" width="640" height="480">
-          Browser Anda tidak mendukung HTML5 <code>&lt;canvas&gt;</code>.
-        </canvas>
-      </div>
-    </div>
-    <script
-      name="shader"
-      data-src="vertex.glsl"
-      data-type="vertex"
-      data-version="v1"
-    ></script>
-    <script
-      name="shader"
-      data-src="fragment.glsl"
-      data-type="fragment"
-      data-version="v1"
-    ></script>
-    <script type="text/javascript" src="libs/signals.js"></script>
-    <script type="text/javascript" src="libs/gl-matrix-min.js"></script>
-    <script type="text/javascript" src="libs/glUtils.js"></script>
-    <script type="text/javascript" src="index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Belajar WebGL</title>
+</head>
+<body>
+  <canvas id="glcanvas" width="640" height="480">
+    Browser Anda tidak mendukung HTML5 <code>&lt;canvas&gt;</code>.
+  </canvas>
+  <script name="shader" data-src="vertex.glsl" data-type="vertex" data-version="v1"></script>
+  <script name="shader" data-src="fragment.glsl" data-type="fragment" data-version="v1"></script>
+  <script name="shader" data-src="vertex2.glsl" data-type="vertex" data-version="v2"></script>
+  <script name="shader" data-src="fragment2.glsl" data-type="fragment" data-version="v2"></script>
+  <script type="text/javascript" src="libs/signals.js"></script>
+  <script type="text/javascript" src="libs/gl-matrix-min.js"></script>
+  <script type="text/javascript" src="libs/glUtils.js"></script>
+  <script type="text/javascript" src="index.js"></script>  
+</body>
 </html>
