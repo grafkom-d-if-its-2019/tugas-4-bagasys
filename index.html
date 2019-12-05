@@ -4,19 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Belajar WebGL</title>
+  <title>Tugas 4 | BagasYS</title>
 </head>
+<style>
+  * { 
+    margin:0; 
+    padding:0;
+  }
+</style>
+
 <body>
-  <canvas id="glcanvas" width="640" height="480">
+  <canvas id="glcanvas" width="600" height="600">
     Browser Anda tidak mendukung HTML5 <code>&lt;canvas&gt;</code>.
   </canvas>
+  <h3>
+    Bagas Y. S. | 05111740000074
+  </h3>
+  <br>
+  <h2>
+    Petunjuk
+  </h2>
+  <div>
+      <strong>
+        <div>
+          <span style="width: 50px; display: inline-block;">Mouse Drag</span>
+          <span>= Rotasi</span>
+        </div>
+      </strong>
+  </div>
+  
   <script name="shader" data-src="vertex.glsl" data-type="vertex" data-version="v1"></script>
   <script name="shader" data-src="fragment.glsl" data-type="fragment" data-version="v1"></script>
-  <script name="shader" data-src="vertex2.glsl" data-type="vertex" data-version="v2"></script>
-  <script name="shader" data-src="fragment2.glsl" data-type="fragment" data-version="v2"></script>
   <script type="text/javascript" src="libs/signals.js"></script>
   <script type="text/javascript" src="libs/gl-matrix-min.js"></script>
   <script type="text/javascript" src="libs/glUtils.js"></script>
-  <script type="text/javascript" src="index.js"></script>  
+  <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
