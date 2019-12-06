@@ -93,7 +93,7 @@
   var scaleXUniformLocation, scaleX, widen;
   var mmLoc, mm, vmLoc, vm, pmLoc, pm, camera;
   var xCharLocation, x_char, yCharLocation, y_char, zCharLocation, z_char, direction_x, direction_y, direction_z;
-  var ddLoc, dd, ac, nmLoc;
+  var ddLoc, dd, ac, nmLoc, vNormal, vTexCoord, vColor;
 
   var verticesCube = [];
   var cubePoints = [
@@ -183,7 +183,7 @@
       return -1;
     }
     
-    var vColor = gl.getAttribLocation(program, 'vColor');
+    vColor = gl.getAttribLocation(program, 'vColor');
     if (vColor < 0) {
       console.log('Failed to get the storage location of vColor');
       return -1;
@@ -236,13 +236,13 @@
       return -1;
     }
 
-    var vTexCoord = gl.getAttribLocation(program, 'vTexCoord');
+    vTexCoord = gl.getAttribLocation(program, 'vTexCoord');
     if (vTexCoord < 0) {
       console.log('Failed to get the storage location of vTexCoord');
       return -1;
     }
 
-    var vNormal = gl.getAttribLocation(program, 'vNormal');
+    vNormal = gl.getAttribLocation(program, 'vNormal');
     if (vNormal < 0) {
       console.log('Failed to get the storage location of vNormal');
       return -1;
@@ -393,6 +393,10 @@
     gl.uniform1i(fFlagUniformLocation, flag);
     gl.drawArrays(gl.TRIANGLES, 0, nCube);
 
+    gl.disableVertexAttribArray(vNormal);
+    gl.disableVertexAttribArray(vTexCoord);
+
+
     // animasi refleksi
     if (scaleX >= 1.0) widen = -1.0;
     else if (scaleX <= -1.0) widen = 1.0;
@@ -419,7 +423,7 @@
     gl.uniform1i(flagUniformLocation, flag);
     
     gl.drawArrays(gl.TRIANGLES, 0, nHuruf);
-
+    gl.disableVertexAttribArray(vColor);
     requestAnimationFrame(render);
   }
 
