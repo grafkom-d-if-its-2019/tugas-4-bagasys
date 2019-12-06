@@ -11,10 +11,9 @@ varying vec3 fPosition;
 varying vec2 fTexCoord;
 
 uniform float scaleX;
-uniform float x_huruf;
-uniform float y_huruf;
-uniform float z_huruf;
-
+uniform float x_char;
+uniform float y_char;
+uniform float z_char;
 uniform int flag;
 
 uniform mat4 modelMatrix;
@@ -23,7 +22,7 @@ uniform mat4 projectionMatrix;
 uniform mat3 normalMatrix;  // Berperan sebagai modelMatrix-nya vektor normal
 
 void main() {
-  vec3 pusat = vec3(x_huruf, y_huruf, z_huruf);
+  vec3 pusat = vec3(x_char, y_char, z_char);
 
   mat4 matrixSkalasi = mat4(
     scaleX, 0.0, 0.0, 0.0,
