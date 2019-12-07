@@ -51,7 +51,7 @@
 
     // load image
     var image = new Image();
-    image.src = "images/tugas4_grafkom.jpg";
+    image.src = "gambar/skin.jpg";
     image.addEventListener('load', function() {
       // make copy it to the texture.
       gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -78,22 +78,19 @@
     x_char += 0.009 * direction_x;
     gl.uniform1f(xCharLocation, x_char);
     
-    if (y_char >= (0.8 - (0.3 * 0.7))) direction_y = -1.0;
-    else if (y_char <= (-0.8 + (0.3 * 0.7))) direction_y = 1.0;
-    y_char += 0.010 * direction_y;
-    gl.uniform1f(yCharLocation, y_char);
-    
     if (z_char >= (0.8 - Math.abs(0.2 * 0.7 * scaleX))) direction_z = -1.0;
     else if (z_char <= (-0.8 + Math.abs(0.2 * 0.7 * scaleX))) direction_z = 1.0;
     z_char += 0.011 * direction_z;
     gl.uniform1f(zCharLocation, z_char);
+
+    if (y_char >= (0.8 - (0.3 * 0.7))) direction_y = -1.0;
+    else if (y_char <= (-0.8 + (0.3 * 0.7))) direction_y = 1.0;
+    y_char += 0.010 * direction_y;
+    gl.uniform1f(yCharLocation, y_char);
   }
 
-  var canvas, gl, program;
-  var scaleXUniformLocation, scaleX, widen;
-  var mmLoc, mm, vmLoc, vm, pmLoc, pm, camera;
-  var xCharLocation, x_char, yCharLocation, y_char, zCharLocation, z_char, direction_x, direction_y, direction_z;
-  var ddLoc, dd, ac, nmLoc, vNormal, vTexCoord, vColor;
+ 
+
 
   var verticesCube = [];
   var cubePoints = [
@@ -156,6 +153,12 @@
     -0.05, -0.3, 0.0,   1.0, 1.0, 0.0,
     0.05, -0.3, 0.0,   0.0, 0, 1.0, 
   ]);
+
+  var canvas, gl, program;
+  var ddLoc, dd, ac, nmLoc, vNormal, vTexCoord, vColor;
+  var scaleXUniformLocation, scaleX, widen;
+  var xCharLocation, x_char, yCharLocation, y_char, zCharLocation, z_char, direction_x, direction_y, direction_z;
+  var mmLoc, mm, pm, camera, vmLoc, vm, pmLoc;
 
   glUtils.SL.init({ callback: function() { main(); }});
 
@@ -281,9 +284,20 @@
     return n;
   }
 
-  var AMORTIZATION = 0.56, isDragging = false, deltaX = 0, deltaY = 0, x_old, y_old;
   var theta = 0;
   var phi = 0;
+  var isDragging = false, AMORTIZATION = 0.74, deltaX = 0, deltaY = 0, x_old, y_old;
+  
+  var onMouseMove = (e) => {
+    e.preventDefault();
+    if (!isDragging) return false;
+    deltaX = (e.pageX-x_old)*2*Math.PI/canvas.width,
+    deltaY = (e.pageY-y_old)*2*Math.PI/canvas.height;
+    phi+=deltaY;
+    theta+= deltaX;
+    x_old = e.pageX;
+    y_old = e.pageY;
+  };
 
   var onMouseDown = (e) => {
     e.preventDefault();
@@ -295,16 +309,6 @@
     isDragging = false;
   };
 
-  var onMouseMove = (e) => {
-    e.preventDefault();
-    if (!isDragging) return false;
-    deltaX = (e.pageX-x_old)*2*Math.PI/canvas.width,
-    deltaY = (e.pageY-y_old)*2*Math.PI/canvas.height;
-    phi+=deltaY;
-    theta+= deltaX;
-    x_old = e.pageX;
-    y_old = e.pageY;
-  };
 
   document.addEventListener("mousedown", onMouseDown, false);
   document.addEventListener("mouseup", onMouseUp, false);
